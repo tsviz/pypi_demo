@@ -1,6 +1,14 @@
 {
-  "image": "ghcr.io/oleksis/devcontainer-features/python-launcher:1",
-  "forwardPorts": [8080],
+  "name": "PyPi Demo",
+  "image": "ghcr.io/devcontainers/features/python:1",
+  "forwardPorts": [
+            8080
+    ],
   "features": {
+              "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+                      "version": "latest",
+                      "autoForwardPorts": true,
+                      "moby": true
+		}
   }
 }
