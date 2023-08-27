@@ -1,0 +1,6 @@
+{
+  "image": "ghcr.io/oleksis/devcontainer-features/python-launcher:1",
+  "forwardPorts": [8080],
+  "features": {
+  }
+}
