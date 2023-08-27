@@ -11,3 +11,5 @@ mv ./dist/*.tar.gz ~/packages/
 pypi-server -p 8080 ~/packages
 rm -r dist
 rm -r ~/packages
+rm -r tsvi_package.egg-info
+rm -r venv
