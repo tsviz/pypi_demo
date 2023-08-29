@@ -10,8 +10,6 @@ name: Upload Python Package
 
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*.*.*'
 
@@ -22,7 +20,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -43,7 +41,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
         name: Release v0.1.0
-        tag: v0.1.0
         artifacts: "dist/*"
         body: |
           Release notes for v0.1.0 # Replace with your release notes
