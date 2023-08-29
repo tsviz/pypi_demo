@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -36,21 +35,13 @@ jobs:
     - name: Build package
       run: python -m build
     
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1
+    - name: Create PYPI release
+      uses: ncipollo/release-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v0.1.0 # Replace with your tag name
-        release_name: Release v0.1.0 # Replace with your release name
+        with:
+        name: Release v0.1.0
+        artifacts: "dist/*"
         body: |
           Release notes for v0.1.0 # Replace with your release notes
-        draft: false
-        prerelease: false
-    
-    - name: Publish package as a release artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: python-package
-        path: dist/
+
